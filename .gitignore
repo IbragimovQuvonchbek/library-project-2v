@@ -1,0 +1,9 @@
+.idea/
+/__pycashe__/
+.vscode/
+.pyc
+.pyo
+.iml
+
+.env
+server.txt
