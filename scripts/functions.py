@@ -198,7 +198,7 @@ def get_user_books_info(user_id):
     conn = connection()
     cursor = conn.cursor()
     query = '''
-    select b.name from books as b join ownedbooks as o 
+    select b.id, b.name from books as b join ownedbooks as o 
     on b.id = o.book_id where o.user_id = %s;
     '''
     values = (user_id,)

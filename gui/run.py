@@ -28,8 +28,11 @@ def is_internet_available():
 class Intro:
     def __init__(self):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.geometry("600x600+350+150")
         self.window.title('Library')
         self.window.minsize(width=600, height=600)
+        self.window.resizable(False, False)
 
         label_intro = Label(self.window, text='Library', font=("Arial", 34, "bold"))
         label_intro.place(relx=0.5, rely=0.4, anchor='center')
@@ -60,7 +63,10 @@ class SignUp:
 
     def __init__(self):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.geometry("600x630+350+150")
         self.window.title("Library")
+        self.window.resizable(False, False)
         self.window.minsize(width=600, height=600)
 
         self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
@@ -182,6 +188,9 @@ class SignUp:
 class LogIn:
     def __init__(self):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.resizable(False, False)
+        self.window.geometry("600x600+350+150")
         self.window.title("Library")
         self.user_id = -1
         self.window.minsize(width=600, height=600)
@@ -228,6 +237,9 @@ class LogIn:
 class Home:
     def __init__(self, superuser, user_id):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.resizable(False, False)
+        self.window.geometry("600x600+350+150")
         self.superuser = superuser
         self.user_id = user_id
         self.window.minsize(width=600, height=600)
@@ -290,6 +302,9 @@ class Home:
 class SeeBooks:
     def __init__(self, superuser, user_id):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.resizable(False, False)
+        self.window.geometry("600x600+350+150")
         self.superuser = superuser
         self.user_id = user_id
         self.window.minsize(width=600, height=600)
@@ -357,7 +372,10 @@ class SeeBooks:
 class RegisteredBooks:
     def __init__(self, user_id, superuser):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.geometry("600x600+350+150")
         self.window.minsize(width=600, height=600)
+        self.window.resizable(False, False)
         self.window.title("Library")
 
         self.user_id = user_id
@@ -426,7 +444,10 @@ class SpecificBook:
     def __init__(self, user_id, superuser, book_id, current_window):
         self.window = Tk()
         self.window.minsize(width=600, height=600)
+        self.window.geometry("600x600+350+150")
+        self.window.resizable(False, False)
         self.window.title("Library")
+        self.window.iconbitmap('../media/myIcon.ico')
 
         self.user_id = user_id
         self.superuser = superuser
@@ -490,6 +511,8 @@ class SpecificBook:
             RegisteredBooks(superuser=self.superuser, user_id=self.user_id)
         elif self.current_window == "AddBook":
             Home(superuser=self.superuser, user_id=self.user_id)
+        elif self.current_window == "SeeUsers":
+            SeeUsers(superuser=self.superuser, user_id=self.user_id)
         else:
             Home(superuser=self.superuser, user_id=self.user_id)
 
@@ -514,7 +537,10 @@ class SpecificBook:
 class AddBook:
     def __init__(self, superuser, user_id):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.geometry("600x600+350+150")
         self.window.title("Library")
+        self.window.resizable(False, False)
         self.window.minsize(width=600, height=600)
 
         self.superuser = superuser
@@ -568,7 +594,10 @@ class AddBook:
 class EditBook:
     def __init__(self, superuser, user_id, book_id):
         self.window = Tk()
+        self.window.iconbitmap('../media/myIcon.ico')
+        self.window.geometry("600x600+350+150")
         self.window.title("Library")
+        self.window.resizable(False, False)
         self.window.minsize(width=600, height=600)
 
         self.superuser = superuser
@@ -647,6 +676,9 @@ class PlaceholderEntry(Entry):
 class SeeUsers:
     def __init__(self, superuser, user_id):
         self.window = Tk()
+        self.window.geometry("600x600+350+150")
+        self.window.resizable(False, False)
+        self.window.iconbitmap('../media/myIcon.ico')
         self.superuser = superuser
         self.user_id = user_id
         self.window.minsize(width=600, height=600)
@@ -713,7 +745,10 @@ class SeeUsers:
 class SpecificUser:
     def __init__(self, user_id, superuser, current_user):
         self.window = Tk()
+        self.window.geometry("600x600+350+150")
         self.window.minsize(width=600, height=600)
+        self.window.resizable(False, False)
+        self.window.iconbitmap('../media/myIcon.ico')
         self.window.title("Library")
 
         self.user_id = user_id
@@ -733,15 +768,20 @@ class SpecificUser:
         Book:'''
 
         self.client_book_info = get_user_books_info(self.current_user)
-        length_books_data = len(self.client_book_info)
-        if length_books_data == 0:
-            book_to_str += " no books"
-        else:
-            for index, book in enumerate(self.client_book_info):
-                if index % 3 == 0 and index != 0:
-                    book_to_str += f"\n{book[0]}, "
-                else:
-                    book_to_str += f"{book[0]}, "
+
+        self.listbox = Listbox(self.window, font=("Arial", 20))
+        self.listbox.grid(row=3, column=2, sticky="nsew")
+
+        scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview)
+        scrollbar.grid(row=3, column=3, sticky="ns")
+
+        self.listbox.config(yscrollcommand=scrollbar.set)
+
+        for item in self.client_book_info:
+            self.listbox.insert(END, f'{item[0]}. {item[1]}')
+
+        self.listbox.bind("<<ListboxSelect>>", self.on_select)
+        self.listbox.bind("<Double-Button-1>", self.on_double_click)
 
         self.book_label = Label(self.window, text=book_to_str, font=("Roboto", 16), justify='left')
         self.book_label.grid(row=1, column=2)
@@ -752,5 +792,19 @@ class SpecificUser:
         self.window.destroy()
         Home(superuser=self.superuser, user_id=self.user_id)
 
+    def on_select(self, event):
+        if is_internet_available():
+            selected_item = self.listbox.get(self.listbox.curselection())
+            return selected_item
+
+    def on_double_click(self, event):
+        if is_internet_available():
+            book_id = int(str(self.listbox.get(self.listbox.curselection())).split('.')[0])
+            self.window.destroy()
+            SpecificBook(user_id=self.user_id, superuser=self.superuser, book_id=book_id,
+                         current_window="SeeUser")
+
 
 Intro()
+
+# SeeUsers(True, 1)
