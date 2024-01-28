@@ -28,20 +28,27 @@ def is_internet_available():
 class Intro:
     def __init__(self):
         self.window = Tk()
-        self.window.iconbitmap('../media/myIcon.ico')
         self.window.geometry("600x600+350+150")
         self.window.title('Library')
+        self.window.iconbitmap('../media/myIcon.ico')
         self.window.minsize(width=600, height=600)
         self.window.resizable(False, False)
 
-        label_intro = Label(self.window, text='Library', font=("Arial", 34, "bold"))
-        label_intro.place(relx=0.5, rely=0.4, anchor='center')
+        self.window.configure(bg='#121212')
 
-        signup_button = Button(self.window, text='Sign up', command=self.sign_up_command)
+        image_path = '../media/myIcon.png'
+        image = PhotoImage(file=image_path)
+
+        # Display the image
+        label_image = Label(self.window, image=image, bg='#121212')
+        label_image.image = image
+        label_image.place(relx=0.5, rely=0.25, anchor='center')
+
+        signup_button = Button(self.window, text='Sign up', command=self.sign_up_command, bg='#121212', fg='white')
         signup_button.place(relx=0.3, rely=0.6, anchor='center')
         signup_button['font'] = ("Arial", 20)
 
-        login_button = Button(self.window, text='Log in', command=self.log_in_command)
+        login_button = Button(self.window, text='Log in', command=self.log_in_command, bg='#121212', fg='white')
         login_button.place(relx=0.7, rely=0.6, anchor='center')
         login_button['font'] = ("Arial", 20)
 
@@ -69,51 +76,63 @@ class SignUp:
         self.window.resizable(False, False)
         self.window.minsize(width=600, height=600)
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
+        self.back_button = Button(self.window, text="⬅️", font=("Arial", 18), padx=5, pady=5, command=self.go_back,
+                                  bg='#1E1E1E', fg='white')
         self.back_button.grid(row=0, column=0)
 
-        self.label_signup = Label(self.window, pady=50, padx=10)
+        self.label_signup = Label(self.window, pady=50, padx=10, bg='#1E1E1E', fg='white')
         self.label_signup['text'] = 'Sign up'
         self.label_signup['font'] = ("Arial", 34, "bold")
         self.label_signup.grid(row=0, column=1)
 
-        self.label_name = Label(self.window, text="name: ", font=('Arial', 20))
+        self.label_name = Label(self.window, text="name: ", font=('Arial', 20), bg='#1E1E1E', fg='white')
         self.label_name.grid(row=1, column=0)
         self.name = Entry(self.window, font=("Arial", 20))
         self.name.grid(row=1, column=1)
 
-        self.label_surname = Label(self.window, text="surname: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_surname = Label(self.window, text="surname: ", font=('Arial', 20), pady=10, padx=10,
+                                   bg='#1E1E1E', fg='white')
         self.label_surname.grid(row=2, column=0)
         self.surname = Entry(self.window, font=("Arial", 20))
         self.surname.grid(row=2, column=1)
 
-        self.label_username = Label(self.window, text="username: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_username = Label(self.window, text="username: ", font=('Arial', 20), pady=10, padx=10,
+                                    bg='#1E1E1E', fg='white')
         self.label_username.grid(row=3, column=0)
         self.username = Entry(self.window, font=("Arial", 20))
         self.username.grid(row=3, column=1)
 
-        self.label_gmail = Label(self.window, text="gmail: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_gmail = Label(self.window, text="gmail: ", font=('Arial', 20), pady=10, padx=10,
+                                 bg='#1E1E1E', fg='white')
         self.label_gmail.grid(row=4, column=0)
         self.gmail = Entry(self.window, font=("Arial", 20))
         self.gmail.grid(row=4, column=1)
 
-        self.label_password = Label(self.window, text="password: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_password = Label(self.window, text="password: ", font=('Arial', 20), pady=10, padx=10,
+                                    bg='#1E1E1E', fg='white')
         self.label_password.grid(row=5, column=0)
         self.password = Entry(self.window, font=("Arial", 20))
         self.password.grid(row=5, column=1)
 
-        self.label_verif = Label(self.window, text="verification code: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_verif = Label(self.window, text="verification code: ", font=('Arial', 20), pady=10, padx=10,
+                                 bg='#1E1E1E', fg='white')
         self.label_verif.grid(row=6, column=0)
         self.verif = Entry(self.window, font=("Arial", 20))
         self.verif.grid(row=6, column=1)
 
-        self.label_check_gmail = Label(self.window, text="", font=('Arial', 14), pady=10, padx=10)
+        self.label_check_gmail = Label(self.window, text="", font=('Arial', 14), pady=10, padx=10,
+                                       bg='#1E1E1E', fg='white')
         self.label_check_gmail.grid(row=7, column=1)
 
-        self.get_code_button = Button(self.window, text="get code", font=("Arial", 20), command=self.get_code)
+        self.get_code_button = Button(self.window, text="get code", font=("Arial", 20), command=self.get_code,
+                                      bg='#1E1E1E', fg='white')
         self.get_code_button.grid(row=8, column=0, pady=50, padx=10)
 
-        self.register_button = Button(self.window, text="register", font=("Arial", 20), command=self.register_button)
+        self.register_button = Button(self.window, text="register", font=("Arial", 20), command=self.register_button,
+                                      bg='#1E1E1E', fg='white')
         self.register_button.grid(row=8, column=1, pady=50, padx=10)
 
         self.window.mainloop()
@@ -195,25 +214,33 @@ class LogIn:
         self.user_id = -1
         self.window.minsize(width=600, height=600)
         self.superuser = ""
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
+        self.back_button = Button(self.window, text="⬅️", font=("Arial", 18), padx=5, pady=5, command=self.go_back,
+                                  bg='#1E1E1E', fg='white')
         self.back_button.grid(row=0, column=0)
 
-        self.label_signup = Label(self.window, pady=50, padx=10)
+        self.label_signup = Label(self.window, pady=50, padx=10, bg='#1E1E1E', fg='white')
         self.label_signup['text'] = 'Log in'
         self.label_signup['font'] = ("Arial", 34, "bold")
         self.label_signup.grid(row=0, column=1)
 
-        self.label_username = Label(self.window, text="username: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_username = Label(self.window, text="username: ", font=('Arial', 20), pady=10, padx=10,
+                                    bg='#1E1E1E', fg='white')
         self.label_username.grid(row=1, column=0)
         self.username = Entry(self.window, font=("Arial", 20))
         self.username.grid(row=1, column=1)
 
-        self.label_password = Label(self.window, text="password: ", font=('Arial', 20), pady=10, padx=10)
+        self.label_password = Label(self.window, text="password: ", font=('Arial', 20), pady=10, padx=10,
+                                    bg='#1E1E1E', fg='white')
         self.label_password.grid(row=2, column=0)
         self.password = Entry(self.window, font=("Arial", 20))
         self.password.grid(row=2, column=1)
 
-        self.login_button = Button(self.window, text="log in", font=("Arial", 20), command=self.login)
+        self.login_button = Button(self.window, text="log in", font=("Arial", 20), command=self.login,
+                                   bg='#1E1E1E', fg='white')
         self.login_button.grid(row=3, column=1, pady=50, padx=10)
 
         self.window.mainloop()
@@ -244,31 +271,40 @@ class Home:
         self.user_id = user_id
         self.window.minsize(width=600, height=600)
         self.window.title("Library")
+
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
         self.x = 0
         self.y = 0
 
         if self.superuser:
-            self.add_books_button = Button(self.window, text="add books", font=("Arial", 20), padx=self.x,
-                                           pady=self.y, command=self.add_book_command)
+            self.add_books_button = Button(self.window, text=" add books ", font=("Arial", 20), padx=self.x,
+                                           pady=self.y, command=self.add_book_command,
+                                           bg='#1E1E1E', fg='white')
             self.add_books_button.grid(row=0, column=0)
-            self.clients_button = Button(self.window, text="see users", font=("Arial", 20), padx=self.x,
-                                         pady=self.y, command=self.clients_button_command)
+            self.clients_button = Button(self.window, text=" see users ", font=("Arial", 20), padx=self.x,
+                                         pady=self.y, command=self.clients_button_command,
+                                         bg='#1E1E1E', fg='white')
             self.clients_button.grid(row=0, column=1)
         else:
             self.x = 4
             self.y = 4
 
-        self.see_books_button = Button(self.window, text="see books", font=("Arial", 20), padx=self.x, pady=self.y,
-                                       command=self.see_books_command)
+        self.see_books_button = Button(self.window, text=" see books ", font=("Arial", 20), padx=self.x, pady=self.y,
+                                       command=self.see_books_command,
+                                       bg='#1E1E1E', fg='white')
         self.see_books_button.grid(row=0, column=2)
 
         if not self.superuser:
-            self.registered_books_button = Button(self.window, text="registered books", font=("Arial", 20), padx=self.x,
-                                                  pady=self.y, command=self.registered_books)
+            self.registered_books_button = Button(self.window, text=" registered books ", font=("Arial", 20),
+                                                  padx=self.x, pady=self.y, command=self.registered_books,
+                                                  bg='#1E1E1E', fg='white')
             self.registered_books_button.grid(row=0, column=3)
 
-        self.log_out_button = Button(self.window, text="log out", font=("Arial", 20), padx=self.x, pady=self.y,
-                                     command=self.log_out_command)
+        self.log_out_button = Button(self.window, text=" log out ", font=("Arial", 20), padx=self.x, pady=self.y,
+                                     command=self.log_out_command,
+                                     bg='#1E1E1E', fg='white')
         self.log_out_button.grid(row=0, column=4)
 
         self.window.mainloop()
@@ -310,12 +346,17 @@ class SeeBooks:
         self.window.minsize(width=600, height=600)
         self.window.title("Library")
 
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
         self.all_books = show_all_books()
 
-        self.listbox = Listbox(self.window, font=("Arial", 20))
+        self.listbox = Listbox(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white', selectbackground='#404040',
+                               selectforeground='white', exportselection=0)
         self.listbox.grid(row=1, column=1, sticky="nsew")
 
-        scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview)
+        scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview, bg='#1E1E1E',
+                              troughcolor='#1E1E1E')
         scrollbar.grid(row=1, column=2, sticky="ns")
 
         self.listbox.config(yscrollcommand=scrollbar.set)
@@ -326,14 +367,15 @@ class SeeBooks:
         self.listbox.bind("<<ListboxSelect>>", self.on_select)
         self.listbox.bind("<Double-Button-1>", self.on_double_click)
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=("Arial", 18), padx=5, pady=5, command=self.go_back,
+                                  bg='#1E1E1E', fg='white')
         self.back_button.grid(row=0, column=0)
 
-        self.search_entry = Entry(font=("Arial", 20))
-        self.search_entry.grid(row=2, column=1, )
+        self.search_entry = Entry(font=("Arial", 20), bg='#1E1E1E', fg='white')
+        self.search_entry.grid(row=2, column=1)
 
         self.search_button = Button(text="search", font=("Arial", 12), pady=5, padx=10,
-                                    command=self.search_button_command)
+                                    command=self.search_button_command, bg='#1E1E1E', fg='white')
         self.search_button.grid(column=3, row=2)
 
         self.window.mainloop()
@@ -378,15 +420,20 @@ class RegisteredBooks:
         self.window.resizable(False, False)
         self.window.title("Library")
 
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
         self.user_id = user_id
         self.superuser = superuser
 
         self.all_books = get_registered_books(self.user_id)
 
-        self.listbox = Listbox(self.window, font=("Arial", 20))
+        self.listbox = Listbox(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white', selectbackground='#404040',
+                               selectforeground='white', exportselection=0)
         self.listbox.grid(row=1, column=1, sticky="nsew")
 
-        scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview)
+        scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview, bg='#1E1E1E',
+                              troughcolor='#1E1E1E')
         scrollbar.grid(row=1, column=2, sticky="ns")
 
         self.listbox.config(yscrollcommand=scrollbar.set)
@@ -397,14 +444,15 @@ class RegisteredBooks:
         self.listbox.bind("<<ListboxSelect>>", self.on_select)
         self.listbox.bind("<Double-Button-1>", self.on_double_click)
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=("Arial", 18), padx=5, pady=5, command=self.go_back,
+                                  bg='#1E1E1E', fg='white')
         self.back_button.grid(row=0, column=0)
 
-        self.search_entry = Entry(font=("Arial", 20))
+        self.search_entry = Entry(font=("Arial", 20), bg='#1E1E1E', fg='white')
         self.search_entry.grid(row=2, column=1, )
 
         self.search_button = Button(text="search", font=("Arial", 12), pady=5, padx=10,
-                                    command=self.search_button_command)
+                                    command=self.search_button_command, bg='#1E1E1E', fg='white')
         self.search_button.grid(column=3, row=2)
 
         self.window.mainloop()
@@ -435,11 +483,6 @@ class RegisteredBooks:
                          current_window="RegisteredBooks")
 
 
-def go_back(self):
-    self.window.destroy()
-    SeeBooks(superuser=self.superuser, user_id=self.user_id)
-
-
 class SpecificBook:
     def __init__(self, user_id, superuser, book_id, current_window):
         self.window = Tk()
@@ -449,12 +492,16 @@ class SpecificBook:
         self.window.title("Library")
         self.window.iconbitmap('../media/myIcon.ico')
 
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
         self.user_id = user_id
         self.superuser = superuser
         self.book_id = book_id
         self.current_window = current_window
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=("Arial", 18), padx=5, pady=5, command=self.go_back,
+                                  bg='#1E1E1E', fg='white')
         self.back_button.grid(row=0, column=0)
 
         self.book_info = get_book_by_id(self.book_id)
@@ -466,11 +513,12 @@ class SpecificBook:
         Unit: {self.book_info[5]}
         '''
 
-        self.book_label = Label(self.window, text=book_to_str, font=("Roboto", 16), justify='left')
+        self.book_label = Label(self.window, text=book_to_str, font=("Roboto", 16), justify='left', bg='#1E1E1E',
+                                fg='white')
         self.book_label.grid(row=1, column=2)
 
         if not self.superuser:
-            self.register_info_label = Label(text="", font=("Arial", 15), fg="green")
+            self.register_info_label = Label(text="", font=("Arial", 15), fg="green", bg='#1E1E1E')
             self.register_info_label.grid(row=2, column=1)
 
             self.is_registered = is_book_registered(book_id=self.book_id, user_id=self.user_id)
@@ -478,16 +526,16 @@ class SpecificBook:
             self.button_text = "unregister" if self.is_registered else "register"
 
             self.register_button = Button(text=self.button_text, font=("Arial", 15),
-                                          command=self.register_button_command)
+                                          command=self.register_button_command, bg='#1E1E1E', fg='white')
             self.register_button.grid(row=3, column=1)
 
         else:
             self.register_button = Button(text="edit", font=("Arial", 15),
-                                          command=self.edit_button_command)
+                                          command=self.edit_button_command, bg='#1E1E1E', fg='white')
             self.register_button.grid(row=3, column=0)
 
             self.register_button = Button(text="delete", font=("Arial", 15),
-                                          command=self.delete_button_command)
+                                          command=self.delete_button_command, bg='#1E1E1E', fg='white')
             self.register_button.grid(row=3, column=1)
 
         self.window.mainloop()
@@ -543,38 +591,48 @@ class AddBook:
         self.window.resizable(False, False)
         self.window.minsize(width=600, height=600)
 
+        # Set background color to a brighter black
+        self.window.configure(bg='#1E1E1E')  # You can adjust the color code as needed
+
         self.superuser = superuser
         self.user_id = user_id
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=("Arial", 18), padx=5, pady=5, command=self.go_back,
+                                  bg='#1E1E1E', fg='white')
         self.back_button.grid(row=0, column=0)
 
-        self.label_name = Label(self.window, text="name: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_name = Label(self.window, text="name: ", font=('Arial', 20), padx=10, pady=10, bg='#1E1E1E',
+                                fg='white')
         self.label_name.grid(row=1, column=0)
-        self.name = Entry(self.window, font=("Arial", 20))
+        self.name = Entry(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white')
         self.name.grid(row=1, column=1)
 
-        self.label_author = Label(self.window, text="author: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_author = Label(self.window, text="author: ", font=('Arial', 20), padx=10, pady=10, bg='#1E1E1E',
+                                  fg='white')
         self.label_author.grid(row=2, column=0)
-        self.author = Entry(self.window, font=("Arial", 20))
+        self.author = Entry(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white')
         self.author.grid(row=2, column=1)
 
-        self.label_category = Label(self.window, text="category: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_category = Label(self.window, text="category: ", font=('Arial', 20), padx=10, pady=10, bg='#1E1E1E',
+                                    fg='white')
         self.label_category.grid(row=3, column=0)
-        self.category = Entry(self.window, font=("Arial", 20))
+        self.category = Entry(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white')
         self.category.grid(row=3, column=1)
 
-        self.label_description = Label(self.window, text="description: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_description = Label(self.window, text="description: ", font=('Arial', 20), padx=10, pady=10,
+                                       bg='#1E1E1E', fg='white')
         self.label_description.grid(row=4, column=0)
-        self.description = Entry(self.window, font=("Arial", 20))
+        self.description = Entry(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white')
         self.description.grid(row=4, column=1)
 
-        self.unit_description = Label(self.window, text="unit: ", font=('Arial', 20), padx=10, pady=10)
+        self.unit_description = Label(self.window, text="unit: ", font=('Arial', 20), padx=10, pady=10, bg='#1E1E1E',
+                                      fg='white')
         self.unit_description.grid(row=5, column=0)
-        self.unit = Entry(self.window, font=("Arial", 20))
+        self.unit = Entry(self.window, font=("Arial", 20), bg='#1E1E1E', fg='white')
         self.unit.grid(row=5, column=1)
 
-        self.add_button = Button(text="add book", font=('Arial', 20), command=self.add_button_command)
+        self.add_button = Button(text="add book", font=('Arial', 20), command=self.add_button_command,
+                                 bg='#1E1E1E', fg='white')
         self.add_button.grid(row=6, column=1)
 
         self.window.mainloop()
@@ -600,39 +658,54 @@ class EditBook:
         self.window.resizable(False, False)
         self.window.minsize(width=600, height=600)
 
+        # Set background color to black and text color to white
+        self.window.configure(bg='#000000')  # Background color
+        text_color = 'white'
+
         self.superuser = superuser
         self.user_id = user_id
         self.book_id = book_id
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back, bg='#000000', fg=text_color)
         self.back_button.grid(row=0, column=0)
 
-        self.label_name = Label(self.window, text="name: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_name = Label(self.window, text="name: ", font=('Arial', 20), padx=10, pady=10, bg='#000000',
+                                fg=text_color)
         self.label_name.grid(row=1, column=0)
-        self.name = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20))
+        self.name = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20),
+                                     bg='#000000', fg=text_color)
         self.name.grid(row=1, column=1)
 
-        self.label_author = Label(self.window, text="author: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_author = Label(self.window, text="author: ", font=('Arial', 20), padx=10, pady=10, bg='#000000',
+                                  fg=text_color)
         self.label_author.grid(row=2, column=0)
-        self.author = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20))
+        self.author = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20),
+                                       bg='#000000', fg=text_color)
         self.author.grid(row=2, column=1)
 
-        self.label_category = Label(self.window, text="category: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_category = Label(self.window, text="category: ", font=('Arial', 20), padx=10, pady=10, bg='#000000',
+                                    fg=text_color)
         self.label_category.grid(row=3, column=0)
-        self.category = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20))
+        self.category = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20),
+                                         bg='#000000', fg=text_color)
         self.category.grid(row=3, column=1)
 
-        self.label_description = Label(self.window, text="description: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_description = Label(self.window, text="description: ", font=('Arial', 20), padx=10, pady=10,
+                                       bg='#000000', fg=text_color)
         self.label_description.grid(row=4, column=0)
-        self.description = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20))
+        self.description = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20),
+                                            bg='#000000', fg=text_color)
         self.description.grid(row=4, column=1)
 
-        self.label_unit = Label(self.window, text="unit: ", font=('Arial', 20), padx=10, pady=10)
+        self.label_unit = Label(self.window, text="unit: ", font=('Arial', 20), padx=10, pady=10, bg='#000000',
+                                fg=text_color)
         self.label_unit.grid(row=5, column=0)
-        self.unit = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20))
+        self.unit = PlaceholderEntry(self.window, placeholder="leave it for unchanged", font=("Arial", 20),
+                                     bg='#000000', fg=text_color)
         self.unit.grid(row=5, column=1)
 
-        self.edit_button = Button(text="edit book", font=('Arial', 20), command=self.edit_button_command)
+        self.edit_button = Button(text="edit book", font=('Arial', 20), command=self.edit_button_command,
+                                  bg='#000000', fg=text_color)
         self.edit_button.grid(row=6, column=1)
 
         self.window.mainloop()
@@ -678,6 +751,7 @@ class SeeUsers:
         self.window = Tk()
         self.window.geometry("600x600+350+150")
         self.window.resizable(False, False)
+        self.window.configure(bg="black")  # Set background color to black
         self.window.iconbitmap('../media/myIcon.ico')
         self.superuser = superuser
         self.user_id = user_id
@@ -686,7 +760,8 @@ class SeeUsers:
 
         self.all_users = show_users()
 
-        self.listbox = Listbox(self.window, font=("Arial", 20))
+        self.listbox = Listbox(self.window, font=("Arial", 20), bg="black",
+                               fg="white")  # Set background to black and text to white
         self.listbox.grid(row=1, column=1, sticky="nsew")
 
         scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview)
@@ -700,14 +775,15 @@ class SeeUsers:
         self.listbox.bind("<<ListboxSelect>>", self.on_select)
         self.listbox.bind("<Double-Button-1>", self.on_double_click)
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back, bg="black",
+                                  fg="white")  # Set button colors
         self.back_button.grid(row=0, column=0)
 
-        self.search_entry = Entry(font=("Arial", 20))
-        self.search_entry.grid(row=2, column=1, )
+        self.search_entry = Entry(font=("Arial", 20), bg="black", fg="white")  # Set entry colors
+        self.search_entry.grid(row=2, column=1)
 
         self.search_button = Button(text="search", font=("Arial", 12), pady=5, padx=10,
-                                    command=self.search_button_command)
+                                    command=self.search_button_command, bg="black", fg="white")  # Set button colors
         self.search_button.grid(column=3, row=2)
 
         self.window.mainloop()
@@ -750,12 +826,14 @@ class SpecificUser:
         self.window.resizable(False, False)
         self.window.iconbitmap('../media/myIcon.ico')
         self.window.title("Library")
+        self.window.configure(bg="black")  # Set background color to black
 
         self.user_id = user_id
         self.superuser = superuser
         self.current_user = current_user
 
-        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back)
+        self.back_button = Button(text="⬅️", font=18, padx=5, pady=5, command=self.go_back, bg="black",
+                                  fg="white")  # Set button colors
         self.back_button.grid(row=0, column=0)
 
         self.client_info = get_user_by_id(self.current_user)
@@ -769,7 +847,7 @@ class SpecificUser:
 
         self.client_book_info = get_user_books_info(self.current_user)
 
-        self.listbox = Listbox(self.window, font=("Arial", 20))
+        self.listbox = Listbox(self.window, font=("Arial", 20), bg="black", fg="white")  # Set listbox colors
         self.listbox.grid(row=3, column=2, sticky="nsew")
 
         scrollbar = Scrollbar(self.window, orient="vertical", command=self.listbox.yview)
@@ -783,7 +861,8 @@ class SpecificUser:
         self.listbox.bind("<<ListboxSelect>>", self.on_select)
         self.listbox.bind("<Double-Button-1>", self.on_double_click)
 
-        self.book_label = Label(self.window, text=book_to_str, font=("Roboto", 16), justify='left')
+        self.book_label = Label(self.window, text=book_to_str, font=("Roboto", 16), justify='left', bg="black",
+                                fg="white")  # Set label colors
         self.book_label.grid(row=1, column=2)
 
         self.window.mainloop()
@@ -806,5 +885,3 @@ class SpecificUser:
 
 
 Intro()
-
-# SeeUsers(True, 1)
